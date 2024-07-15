@@ -1,17 +1,8 @@
 @if($product)
-    <h1>{{ $product->title }} <br> <small style="font-weight: lighter">/product/{{ $product->slug }}</small></h1>
-    <style>
-        li a {
-            color: black;
-        }
-        .out_of_stock {
-            opacity: 0.5;
-            pointer-events: none
-        }
-        .out_of_stock a {
-            color: gray;
-        }
-    </style>
+    <div style="display: flex; gap: 30px">
+        <img src="{{ $product->thumbnail }}" width="150" alt="">
+        <h1>{{ $product->title }} <br> <small style="font-weight: lighter">/product/{{ $product->slug }}</small></h1>
+    </div>
     <div>
         <h3>Sellers</h3>
         @if($product->websites)
@@ -32,4 +23,16 @@
             </ul>
         @endif
     </div>
+    <style>
+        li a {
+            color: black;
+        }
+        .out_of_stock {
+            opacity: 0.5;
+            pointer-events: none
+        }
+        .out_of_stock a {
+            color: gray;
+        }
+    </style>
 @endif
