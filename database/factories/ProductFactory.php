@@ -17,7 +17,7 @@ class ProductFactory extends Factory {
         return [
             'title'     => $this->faker->words(6, true),
             'slug'      => $this->faker->slug(5),
-            'thumbnail' => $this->faker->imageUrl(),
+            'thumbnail' => $this->faker->imageUrl(320, 280),
         ];
     }
 }

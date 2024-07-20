@@ -16,8 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('website_id')->index();
             $table->integer('prev_price')->nullable();
             $table->integer('current_price')->nullable();
-            $table->tinyInteger('in_stock');
-            $table->dateTime("recorded_at")->useCurrent();
+            $table->enum('status', ['in_stock', 'out_of_stock', 'unknown'])->default('unknown');
+            $table->text('product_path');
+            $table->timestamps();
+            $table->dateTime("recorded_at")->nullable();
             $table->foreign('website_id')->references('id')->on('websites');
             $table->foreign('product_id')->references('id')->on('products');
             $table->primary(['product_id', 'website_id']);

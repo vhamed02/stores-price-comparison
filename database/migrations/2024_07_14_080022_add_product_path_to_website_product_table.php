@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('website_product', function (Blueprint $table) {
-            $table->text('product_path')->after('in_stock');
         });
     }
 

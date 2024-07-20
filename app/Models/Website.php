@@ -26,7 +26,7 @@ class Website extends Model {
                 'website_product',
                 'website_id',
                 'product_id'
-            )->withPivot('prev_price', 'current_price', 'in_stock', 'product_path', 'recorded_at');
+            )->withPivot('prev_price', 'current_price', 'status', 'product_path', 'recorded_at');
     }
 
 }
