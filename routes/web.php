@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller;
@@ -23,3 +24,4 @@ Route::group( [ 'prefix' => 'seller-area' ], function () {
         Route::post( '/{website}/products/add', [ Seller\WebsiteProductsController::class, 'store' ] )->name( 'seller.website.products.store' );
     } );
 } );
+Route::get( '/mq/send', [ MessageController::class, 'send' ] )->name( 'message.send' );
