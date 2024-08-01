@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('current_price')->nullable();
             $table->enum('status', ['in_stock', 'out_of_stock', 'unknown'])->default('unknown');
             $table->text('product_path');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->dateTime("recorded_at")->nullable();
             $table->foreign('website_id')->references('id')->on('websites');
             $table->foreign('product_id')->references('id')->on('products');
