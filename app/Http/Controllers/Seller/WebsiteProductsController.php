@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Seller;
 
+use App\Events\SellerAddedNewProduct;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Website;
@@ -14,16 +15,18 @@ class WebsiteProductsController extends Controller {
         return view( 'seller-area.website.products.index', compact( 'websiteProducts', 'website' ) );
     }
 
-    public function create(Website $website) {
+    public function create( Website $website ) {
         $products = Product::all();
 
-        return view('seller-area.website.products.create', compact('website', 'products'));
+        return view( 'seller-area.website.products.create', compact( 'website', 'products' ) );
     }
 
-    public function store( Website $website, Request $request) {
+    public function store( Website $website, Request $request ) {
         // TODO: validations
-        $website->products()->attach( $request->input('product_id'), [
-            'product_path' => $request->input('product_path'),
+        $website->products()->attach( $request->input( 'product_id' ), [
+            'product_path' => $request->input( 'product_path' ),
         ] );
+
+        SellerAddedNewProduct::dispatch( $request->input( 'product_path' ) );
     }
 }

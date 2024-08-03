@@ -11,6 +11,7 @@ class Website extends Model {
 
     protected $fillable = [
         'title',
+        'description',
         'url',
         'seller_id',
     ];
